@@ -25,3 +25,11 @@ Route::get('/contact', function () {
 Route::get('/order', function () {
     return view('order');
 })->name('order');
+
+Route::get('/cart', function () {
+    return view('cart');
+})->name('cart');
+
+Route::get('/checkout', function () {
+    return view('checkout');
+})->name('checkout');
