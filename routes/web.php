@@ -8,7 +8,11 @@ Route::get('/', function () {
 
 Route::get('/products', function () {
     return view('products');
-})->name('products.index');
+})->name('products');
+
+Route::get('/product-details', function () {
+    return view('product-details');
+})->name('product-details');    
 
 Route::get('/about', function () {
     return view('about');
