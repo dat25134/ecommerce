@@ -37,3 +37,7 @@ Route::get('/checkout', function () {
 Route::get('/order-tracking', function () {
     return view('order-tracking');
 })->name('order-tracking');
+
+Route::get('/user-profile', function () {
+    return view('user-profile');
+})->name('user-profile');
