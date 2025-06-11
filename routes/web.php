@@ -33,3 +33,7 @@ Route::get('/cart', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 })->name('checkout');
+
+Route::get('/order-tracking', function () {
+    return view('order-tracking');
+})->name('order-tracking');
