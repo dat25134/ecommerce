@@ -387,13 +387,8 @@
     <!-- Footer -->
     @include('partials.footer')
 
-    <!-- Floating Order Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-full shadow-2xl hover:animate-none transition-all animate-bounce">
-            <i data-lucide="shopping-cart" class="w-5 h-5 inline mr-2"></i>
-            Đặt Hàng Ngay
-        </button>
-    </div>
+    <!-- Cart Popup -->
+    @include('partials.cart-popup')
 </div>
 @endsection
 
@@ -401,6 +396,8 @@
 <script>
 function productDetailApp() {
     return {
+        showCart: false,
+        cartCount: 3,
         // Add any necessary JavaScript functionality here
     }
 }
