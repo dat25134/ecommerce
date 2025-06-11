@@ -4,7 +4,7 @@
 @section('description', 'Bánh mì Sài Gòn truyền thống với hương vị đậm đà, được làm thủ công từ nguyên liệu tươi ngon nhất. 20 năm kinh nghiệm phục vụ khách hàng.')
 
 @section('content')
-<div class="min-h-screen bg-white" x-data="banhMiApp()">
+<div class="min-h-screen bg-white" x-data="homeApp()">
     <!-- Header -->
     @include('partials.header')
 
@@ -337,13 +337,8 @@
     <!-- Footer -->
     @include('partials.footer')
 
-    <!-- Floating Order Button -->
-    <div class="fixed bottom-6 right-6 z-50">
-        <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-3 rounded-full shadow-2xl hover:animate-none transition-all animate-bounce" @click="orderNow()">
-            <i data-lucide="shopping-cart" class="w-5 h-5 inline mr-2"></i>
-            Đặt Hàng Ngay
-        </button>
-    </div>
+    <!-- Cart Popup -->
+    @include('partials.cart-popup')
 
     <!-- Lightbox Modal -->
     <div x-show="showLightbox" x-transition class="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4" @click="closeLightbox()" x-cloak>
@@ -362,12 +357,14 @@
 
 @push('scripts')
 <script>
-function banhMiApp() {
+function homeApp() {
     return {
         isVideoPlaying: false,
         showLightbox: false,
         lightboxImage: '',
         lightboxTitle: '',
+        showCart: false,
+        cartCount: 3,
         
         toggleVideo() {
             // Fake video: just show alert
