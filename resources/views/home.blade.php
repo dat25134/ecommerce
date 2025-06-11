@@ -6,53 +6,8 @@
 @section('content')
 <div class="min-h-screen bg-white" x-data="banhMiApp()">
     <!-- Header -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
-        <div class="container mx-auto px-4 py-4">
-            <div class="flex items-center justify-between">
-                <div class="flex items-center space-x-2">
-                    <div class="w-12 h-12 relative">
-                        <img src="{{ asset('images/logo.png') }}" alt="Bánh Mì Sài Gòn Logo" class="w-full h-full object-contain">
-                    </div>
-                    <div>
-                        <h1 class="text-xl font-bold text-gray-800">Bánh Mì Sài Gòn</h1>
-                        <p class="text-sm text-gray-600">Ngon - Rẻ - Sạch</p>
-                    </div>
-                </div>
+    @include('partials.header')
 
-                <nav class="hidden md:flex items-center space-x-6">
-                    <a href="#home" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">Trang Chủ</a>
-                    <a href="#menu" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">Thực Đơn</a>
-                    <a href="#about" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">Về Chúng Tôi</a>
-                    <a href="#contact" class="text-gray-700 hover:text-orange-500 font-medium transition-colors">Liên Hệ</a>
-                </nav>
-
-                <div class="flex items-center space-x-2">
-                    <div class="hidden md:flex items-center space-x-1 text-sm text-gray-600">
-                        <i data-lucide="phone" class="w-4 h-4"></i>
-                        <span>0123.456.789</span>
-                    </div>
-                    <button class="bg-red-500 hover:bg-red-600 text-white font-semibold px-6 py-2 rounded-md transition-colors" @click="orderNow()">
-                        <i data-lucide="shopping-cart" class="w-4 h-4 inline mr-2"></i>
-                        Đặt Hàng
-                    </button>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <!-- Weekly Banner -->
-    <div class="bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 relative overflow-hidden">
-        <div class="absolute inset-0 bg-black/10"></div>
-        <div class="container mx-auto px-4 relative">
-            <div class="flex items-center justify-center space-x-4">
-                <span class="bg-yellow-400 text-black font-bold px-3 py-1 rounded-full text-sm">🔥 HOT DEAL TUẦN NÀY</span>
-                <span class="text-lg font-semibold">Combo Sáng: Bánh Mì + Cà Phê = 25.000đ</span>
-                <button class="border border-white text-white hover:bg-white hover:text-orange-500 font-semibold px-4 py-1 rounded-md transition-colors" @click="orderCombo()">
-                    Đặt Ngay
-                </button>
-            </div>
-        </div>
-    </div>
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-orange-50 to-red-50 py-16 overflow-hidden" id="home">
@@ -100,20 +55,13 @@
                 <div class="relative">
                     <div class="relative bg-gray-900 rounded-2xl overflow-hidden shadow-2xl">
                         <div class="aspect-video relative">
-                            <!-- Video element -->
-                            <video 
-                                x-ref="heroVideo"
+                            <!-- Fake video thumbnail using placeholder image -->
+                            <img 
+                                src="https://placehold.co/800x450/orange/fff?text=Bánh+Mì+Sài+Gòn" 
+                                alt="Quy Trình Làm Bánh Mì Thủ Công"
                                 class="w-full h-full object-cover"
-                                poster="{{ asset('images/video-thumbnail.jpg') }}"
-                                @play="isVideoPlaying = true"
-                                @pause="isVideoPlaying = false"
-                                @ended="isVideoPlaying = false"
+                                style="object-fit: cover;"
                             >
-                                <source src="{{ asset('videos/baker-making-banh-mi.mp4') }}" type="video/mp4">
-                                <source src="{{ asset('videos/baker-making-banh-mi.webm') }}" type="video/webm">
-                                Trình duyệt của bạn không hỗ trợ video.
-                            </video>
-
                             <!-- Video overlay controls -->
                             <div class="absolute inset-0 bg-black/30 flex items-center justify-center group hover:bg-black/20 transition-all">
                                 <button 
@@ -123,7 +71,6 @@
                                     <i :data-lucide="isVideoPlaying ? 'pause' : 'play'" class="w-8 h-8 text-white" :class="{'ml-1': !isVideoPlaying}"></i>
                                 </button>
                             </div>
-
                             <!-- Video info overlay -->
                             <div class="absolute bottom-4 left-4 right-4 text-white">
                                 <p class="font-semibold text-lg mb-1">Quy Trình Làm Bánh Mì Thủ Công</p>
@@ -169,28 +116,28 @@
                     [
                         'name' => 'Bánh Mì Thịt Nướng',
                         'price' => '20.000đ',
-                        'image' => 'banh-mi-thit-nuong.jpg',
+                        'image' => 'https://placehold.co/400x300/ffb366/fff?text=Thịt+Nướng',
                         'description' => 'Thịt nướng thơm lừng, rau củ tươi ngon',
                         'badge' => 'Bán chạy #1',
                     ],
                     [
                         'name' => 'Bánh Mì Pate',
                         'price' => '15.000đ',
-                        'image' => 'banh-mi-pate.jpg',
+                        'image' => 'https://placehold.co/400x300/ffd699/333?text=Pate',
                         'description' => 'Pate đậm đà, truyền thống Việt Nam',
                         'badge' => 'Truyền thống',
                     ],
                     [
                         'name' => 'Bánh Mì Chả Cá',
                         'price' => '25.000đ',
-                        'image' => 'banh-mi-cha-ca.jpg',
+                        'image' => 'https://placehold.co/400x300/ffcc99/333?text=Chả+Cá',
                         'description' => 'Chả cá Hà Nội, vị ngon khó quên',
                         'badge' => 'Đặc biệt',
                     ],
                     [
                         'name' => 'Bánh Mì Xíu Mại',
                         'price' => '18.000đ',
-                        'image' => 'banh-mi-xiu-mai.jpg',
+                        'image' => 'https://placehold.co/400x300/ff9966/fff?text=Xíu+Mại',
                         'description' => 'Xíu mại tự làm, nước sốt đặc biệt',
                         'badge' => 'Mới',
                     ],
@@ -201,7 +148,7 @@
                 <div class="group hover:shadow-xl transition-all duration-300 border-0 shadow-md hover:-translate-y-2 bg-white rounded-lg overflow-hidden">
                     <div class="relative overflow-hidden">
                         <img 
-                            src="{{ asset('images/' . $product['image']) }}" 
+                            src="{{ $product['image'] }}" 
                             alt="{{ $product['name'] }}"
                             class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
                             loading="lazy"
@@ -229,9 +176,9 @@
             </div>
 
             <div class="text-center mt-12">
-                <button class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 text-lg rounded-md transition-colors" @click="viewAllProducts()">
+                <a href="{{ route('products') }}" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-8 py-3 text-lg rounded-md transition-colors inline-block">
                     Xem Tất Cả Sản Phẩm
-                </button>
+                </a>
             </div>
         </div>
     </section>
@@ -250,17 +197,29 @@
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 @php
                 $galleryImages = [
-                    ['image' => 'shop-front.jpg', 'title' => 'Mặt tiền cửa hàng'],
-                    ['image' => 'baker-working.jpg', 'title' => 'Thợ làm bánh chuyên nghiệp'],
-                    ['image' => 'fresh-bread.jpg', 'title' => 'Bánh mì tươi ngon'],
-                    ['image' => 'ingredients.jpg', 'title' => 'Nguyên liệu tươi sạch'],
+                    [
+                        'image' => 'https://placehold.co/400x300/ffb366/fff?text=Mặt+Tiền',
+                        'title' => 'Mặt tiền cửa hàng'
+                    ],
+                    [
+                        'image' => 'https://placehold.co/400x300/ffd699/333?text=Thợ+Làm+Bánh',
+                        'title' => 'Thợ làm bánh chuyên nghiệp'
+                    ],
+                    [
+                        'image' => 'https://placehold.co/400x300/ffcc99/333?text=Bánh+Mì+Tươi',
+                        'title' => 'Bánh mì tươi ngon'
+                    ],
+                    [
+                        'image' => 'https://placehold.co/400x300/ff9966/fff?text=Nguyên+Liệu+Tươi',
+                        'title' => 'Nguyên liệu tươi sạch'
+                    ],
                 ];
                 @endphp
 
                 @foreach($galleryImages as $index => $item)
                 <div class="relative group overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all cursor-pointer" @click="openLightbox({{ $index }})">
                     <img 
-                        src="{{ asset('images/' . $item['image']) }}" 
+                        src="{{ $item['image'] }}" 
                         alt="{{ $item['title'] }}"
                         class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-300"
                         loading="lazy"
@@ -305,8 +264,9 @@
                 </div>
 
                 <div class="relative">
+                    <!-- Fake owner image using placeholder -->
                     <img 
-                        src="{{ asset('images/owner-story.jpg') }}" 
+                        src="https://placehold.co/600x400/ffb366/fff?text=Chủ+Cửa+Hàng" 
                         alt="Câu chuyện về chúng tôi"
                         class="rounded-2xl shadow-xl w-full"
                         loading="lazy"
@@ -375,56 +335,7 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="flex items-center space-x-2 mb-4">
-                        <div class="w-8 h-8">
-                            <img src="{{ asset('images/logo-white.png') }}" alt="Logo" class="w-full h-full object-contain">
-                        </div>
-                        <span class="text-xl font-bold">Bánh Mì Sài Gòn</span>
-                    </div>
-                    <p class="text-gray-400">
-                        Bánh mì ngon nhất Sài Gòn với hương vị truyền thống được gìn giữ qua nhiều thế hệ.
-                    </p>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Thực Đơn</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white transition-colors">Bánh Mì Thịt Nướng</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Bánh Mì Pate</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Bánh Mì Chả Cá</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Bánh Mì Xíu Mại</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Liên Kết</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="#about" class="hover:text-white transition-colors">Về Chúng Tôi</a></li>
-                        <li><a href="#contact" class="hover:text-white transition-colors">Liên Hệ</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Chính Sách</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Điều Khoản</a></li>
-                    </ul>
-                </div>
-
-                <div>
-                    <h4 class="font-bold text-lg mb-4">Liên Hệ</h4>
-                    <div class="space-y-2 text-gray-400">
-                        <p>📍 123 Đường Nguyễn Văn Cừ, Q1, HCM</p>
-                        <p>📞 0123.456.789</p>
-                        <p>⏰ 6:00 - 22:00 hàng ngày</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 Bánh Mì Sài Gòn. Tất cả quyền được bảo lưu.</p>
-            </div>
-        </div>
-    </footer>
+    @include('partials.footer')
 
     <!-- Floating Order Button -->
     <div class="fixed bottom-6 right-6 z-50">
@@ -459,12 +370,8 @@ function banhMiApp() {
         lightboxTitle: '',
         
         toggleVideo() {
-            const video = this.$refs.heroVideo;
-            if (this.isVideoPlaying) {
-                video.pause();
-            } else {
-                video.play();
-            }
+            // Fake video: just show alert
+            alert('Video đang phát (hình ảnh minh họa)');
         },
         
         orderNow() {
@@ -485,18 +392,12 @@ function banhMiApp() {
             document.getElementById('menu').scrollIntoView({ behavior: 'smooth' });
         },
         
-        viewAllProducts() {
-            // Redirect to products page
-            alert('Chuyển đến trang sản phẩm...');
-            // window.location.href = '/products';
-        },
-        
         openLightbox(index) {
             const images = [
-                { image: '{{ asset("images/shop-front.jpg") }}', title: 'Mặt tiền cửa hàng' },
-                { image: '{{ asset("images/baker-working.jpg") }}', title: 'Thợ làm bánh chuyên nghiệp' },
-                { image: '{{ asset("images/fresh-bread.jpg") }}', title: 'Bánh mì tươi ngon' },
-                { image: '{{ asset("images/ingredients.jpg") }}', title: 'Nguyên liệu tươi sạch' }
+                { image: 'https://placehold.co/800x600/ffb366/fff?text=Mặt+Tiền', title: 'Mặt tiền cửa hàng' },
+                { image: 'https://placehold.co/800x600/ffd699/333?text=Thợ+Làm+Bánh', title: 'Thợ làm bánh chuyên nghiệp' },
+                { image: 'https://placehold.co/800x600/ffcc99/333?text=Bánh+Mì+Tươi', title: 'Bánh mì tươi ngon' },
+                { image: 'https://placehold.co/800x600/ff9966/fff?text=Nguyên+Liệu+Tươi', title: 'Nguyên liệu tươi sạch' }
             ];
             
             this.lightboxImage = images[index].image;

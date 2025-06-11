@@ -161,8 +161,16 @@
                         <template x-for="product in filteredProducts" :key="product.id">
                             <div class="bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 group overflow-hidden">
                                 <!-- Product Image -->
-                                <div class="relative overflow-hidden">
-                                    <img :src="product.image" :alt="product.name" class="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300">
+                                <div class="relative overflow-hidden flex items-center justify-center bg-orange-50" style="height: 12rem;">
+                                    <!-- Fake Bánh Mì SVG -->
+                                    <svg viewBox="0 0 160 80" width="160" height="80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-40 h-32 object-contain">
+                                        <ellipse cx="80" cy="40" rx="75" ry="32" fill="#FCD34D"/>
+                                        <ellipse cx="80" cy="40" rx="70" ry="28" fill="#FBBF24"/>
+                                        <ellipse cx="80" cy="40" rx="60" ry="22" fill="#FDE68A"/>
+                                        <path d="M30 40 Q80 10 130 40" stroke="#F59E42" stroke-width="3" fill="none"/>
+                                        <path d="M35 50 Q80 25 125 50" stroke="#F59E42" stroke-width="2" fill="none"/>
+                                        <path d="M40 60 Q80 45 120 60" stroke="#F59E42" stroke-width="1.5" fill="none"/>
+                                    </svg>
                                     <div class="absolute top-3 left-3">
                                         <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium" x-text="product.badge"></span>
                                     </div>
@@ -224,8 +232,16 @@
                             <div class="bg-white rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden">
                                 <div class="flex flex-col md:flex-row">
                                     <!-- Product Image -->
-                                    <div class="md:w-1/3 relative overflow-hidden">
-                                        <img :src="product.image" :alt="product.name" class="w-full h-48 md:h-full object-cover">
+                                    <div class="md:w-1/3 relative overflow-hidden flex items-center justify-center bg-orange-50" style="min-height: 12rem;">
+                                        <!-- Fake Bánh Mì SVG -->
+                                        <svg viewBox="0 0 160 80" width="160" height="80" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-40 h-32 object-contain">
+                                            <ellipse cx="80" cy="40" rx="75" ry="32" fill="#FCD34D"/>
+                                            <ellipse cx="80" cy="40" rx="70" ry="28" fill="#FBBF24"/>
+                                            <ellipse cx="80" cy="40" rx="60" ry="22" fill="#FDE68A"/>
+                                            <path d="M30 40 Q80 10 130 40" stroke="#F59E42" stroke-width="3" fill="none"/>
+                                            <path d="M35 50 Q80 25 125 50" stroke="#F59E42" stroke-width="2" fill="none"/>
+                                            <path d="M40 60 Q80 45 120 60" stroke="#F59E42" stroke-width="1.5" fill="none"/>
+                                        </svg>
                                         <div class="absolute top-3 left-3">
                                             <span class="bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium" x-text="product.badge"></span>
                                         </div>
@@ -322,7 +338,14 @@
             
             <div x-show="selectedProduct">
                 <div class="flex items-center space-x-4 mb-4">
-                    <img :src="selectedProduct?.image" :alt="selectedProduct?.name" class="w-16 h-16 object-cover rounded-lg">
+                    <!-- Fake Bánh Mì SVG for modal -->
+                    <svg viewBox="0 0 80 40" width="64" height="32" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 object-contain rounded-lg bg-orange-50">
+                        <ellipse cx="40" cy="20" rx="37" ry="16" fill="#FCD34D"/>
+                        <ellipse cx="40" cy="20" rx="34" ry="14" fill="#FBBF24"/>
+                        <ellipse cx="40" cy="20" rx="28" ry="10" fill="#FDE68A"/>
+                        <path d="M15 20 Q40 5 65 20" stroke="#F59E42" stroke-width="2" fill="none"/>
+                        <path d="M18 26 Q40 13 62 26" stroke="#F59E42" stroke-width="1.5" fill="none"/>
+                    </svg>
                     <div>
                         <h4 class="font-semibold text-gray-800" x-text="selectedProduct?.name"></h4>
                         <p class="text-orange-500 font-bold" x-text="formatPrice(selectedProduct?.price)"></p>
@@ -392,7 +415,7 @@ function productListApp() {
                 id: 1,
                 name: 'Bánh Mì Thịt Nướng',
                 price: 20000,
-                image: '{{ asset("images/banh-mi-thit-nuong.jpg") }}',
+                image: '', // fake image, not used
                 description: 'Thịt nướng thơm lừng, rau củ tươi ngon, nước sốt đặc biệt',
                 category: 'nuong',
                 badge: 'Bán chạy #1',
@@ -411,7 +434,7 @@ function productListApp() {
                 id: 2,
                 name: 'Bánh Mì Pate',
                 price: 15000,
-                image: '{{ asset("images/banh-mi-pate.jpg") }}',
+                image: '',
                 description: 'Pate đậm đà, truyền thống Việt Nam, hương vị cổ điển',
                 category: 'truyen-thong',
                 badge: 'Truyền thống',
@@ -429,7 +452,7 @@ function productListApp() {
                 id: 3,
                 name: 'Bánh Mì Chả Cá',
                 price: 25000,
-                image: '{{ asset("images/banh-mi-cha-ca.jpg") }}',
+                image: '',
                 description: 'Chả cá Hà Nội, vị ngon khó quên, công thức gia truyền',
                 category: 'dac-biet',
                 badge: 'Đặc biệt',
@@ -447,7 +470,7 @@ function productListApp() {
                 id: 4,
                 name: 'Bánh Mì Xíu Mại',
                 price: 18000,
-                image: '{{ asset("images/banh-mi-xiu-mai.jpg") }}',
+                image: '',
                 description: 'Xíu mại tự làm, nước sốt đặc biệt, hương vị Hoa',
                 category: 'truyen-thong',
                 badge: 'Mới',
@@ -464,7 +487,7 @@ function productListApp() {
                 id: 5,
                 name: 'Bánh Mì Gà Nướng',
                 price: 22000,
-                image: '{{ asset("images/banh-mi-ga-nuong.jpg") }}',
+                image: '',
                 description: 'Gà nướng tẩm ướp đậm đà, thịt mềm ngọt tự nhiên',
                 category: 'nuong',
                 badge: 'Hot',
@@ -482,7 +505,7 @@ function productListApp() {
                 id: 6,
                 name: 'Bánh Mì Chay Nấm',
                 price: 16000,
-                image: '{{ asset("images/banh-mi-chay-nam.jpg") }}',
+                image: '',
                 description: 'Nấm xào thơm ngon, rau củ tươi, phù hợp người ăn chay',
                 category: 'chay',
                 badge: 'Healthy',
@@ -500,7 +523,7 @@ function productListApp() {
                 id: 7,
                 name: 'Bánh Mì Bò Nướng Lá Lốt',
                 price: 28000,
-                image: '{{ asset("images/banh-mi-bo-nuong-la-lot.jpg") }}',
+                image: '',
                 description: 'Bò nướng lá lốt thơm lừng, hương vị đặc trưng miền Nam',
                 category: 'dac-biet',
                 badge: 'Premium',
@@ -518,7 +541,7 @@ function productListApp() {
                 id: 8,
                 name: 'Bánh Mì Chả Lụa',
                 price: 17000,
-                image: '{{ asset("images/banh-mi-cha-lua.jpg") }}',
+                image: '',
                 description: 'Chả lụa truyền thống, thơm ngon đậm đà hương vị Việt',
                 category: 'truyen-thong',
                 badge: 'Classic',
