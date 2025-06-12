@@ -11,10 +11,13 @@
 
     <!-- Hero Section -->
     <section class="relative bg-gradient-to-br from-orange-50 to-red-50 py-16 overflow-hidden" id="home">
-        <!-- Background pattern -->
-        <div class="absolute inset-0 opacity-5">
-            <div class="absolute inset-0" style="background-image: url('data:image/svg+xml,%3Csvg width=\'60\' height=\'60\' viewBox=\'0 0 60 60\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cg fill=\'none\' fillRule=\'evenodd\'%3E%3Cg fill=\'%23f97316\' fillOpacity=\'0.1\'%3E%3Ccircle cx=\'30\' cy=\'30\' r=\'4\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E');"></div>
-        </div>
+        <!-- Background video -->
+        <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline poster="https://placehold.co/1920x1080/orange/fff?text=Video+Loading">
+            <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4">
+            Trình duyệt của bạn không hỗ trợ thẻ video.
+        </video>
+        <!-- Overlay to make text readable -->
+        <div class="absolute inset-0 bg-black opacity-30"></div>
 
         <div class="container mx-auto px-4 relative">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
