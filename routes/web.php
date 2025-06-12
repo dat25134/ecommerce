@@ -41,3 +41,31 @@ Route::get('/order-tracking', function () {
 Route::get('/user-profile', function () {
     return view('user-profile');
 })->name('user-profile');
+
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+Route::get('/admin/products', function () {
+    return view('admin.products');
+})->name('admin.products');
+
+Route::get('/admin/orders', function () {
+    return view('admin.orders');
+})->name('admin.orders');
+
+Route::get('/admin/customers', function () {
+    return view('admin.customers');
+})->name('admin.customers');
+
+Route::get('/admin/reports', function () {
+    return view('admin.reports');
+})->name('admin.reports');
+
+Route::get('/admin/settings', function () {
+    return view('admin.settings');
+})->name('admin.settings');
+
+Route::get('/admin/logout', function () {
+    return view('admin.logout');
+})->name('logout');   
